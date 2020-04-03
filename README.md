@@ -15,3 +15,6 @@ Or if using Docker (which you should anyways since we are using Microservices...
 - [ ] UML for overall architecture using draw.io
 - [ ] Create database(s) schemas for each microservice
 - [ ] Construct docker compose file to get all services up and running
+
+If you found this repo helpful, a [small donation](https://www.buymeacoffee.com/VlduzAG) would be greatly appreciated. 
+All proceeds go towards coffee, and all coffee goes towards more code.
