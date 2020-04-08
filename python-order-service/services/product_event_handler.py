@@ -8,7 +8,7 @@ def emit_product_order(name):
     channel = connection.channel()
 
     exchange_name = 'product_order'
-    routing_key = 'product.order.update'
+    routing_key = 'product.order.build'
 
     # This will create the exchange if it doesn't already exist.
     channel.exchange_declare(exchange=exchange_name, exchange_type='topic', durable=True)
