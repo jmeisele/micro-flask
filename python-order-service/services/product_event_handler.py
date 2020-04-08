@@ -22,8 +22,3 @@ def emit_product_order(name):
     
     print('%r sent to factory %r with data: %r '%(routing_key, exchange_name, new_data))
     connection.close()
-
-def consume_product_order(name):
-    # listen to 'buy' events on rabbitmq-server
-    
-    pass
