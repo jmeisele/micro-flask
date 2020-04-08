@@ -7,7 +7,7 @@ From the command line:
 - docker-compose up
 
 
-#TODO
+# TODOs
 - [ ] UML for overall architecture using draw.io
 - [ ] Create database(s) schemas for each microservice
 - [X] Construct docker compose file to get all services up and running
