@@ -18,3 +18,6 @@ def buy():
     price = redis.get(name)
     emit_product_order(name)
     return jsonify({'receipt': 'Thanks for ordering! Your total comes to: ' + str(price)}), 200
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=True, port=3000)
