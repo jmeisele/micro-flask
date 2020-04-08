@@ -63,5 +63,7 @@ FROM golang:latest
 RUN mkdir /go-service
 ADD . /go-service/
 WORKDIR /go-service
+RUN go get github.com/streadway/amqp
 RUN go build -o main .
-CMD ["/go-service/main"]
+ENTRYPOINT [ "go" ]
+CMD ["run main.go"]

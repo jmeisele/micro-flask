@@ -20,5 +20,10 @@ def emit_product_order(name):
                             body=json.dumps(new_data),
                             properties=pika.BasicProperties(delivery_mode=2)) #Delivery mode 2 makes the broker save the message to disk
     
-    print('%r sent to facotry %r with data: %r '%(routing_key, exchange_name, new_data))
+    print('%r sent to factory %r with data: %r '%(routing_key, exchange_name, new_data))
     connection.close()
+
+def consume_product_order(name):
+    # listen to 'buy' events on rabbitmq-server
+    
+    pass
