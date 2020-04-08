@@ -1,20 +1,22 @@
 version: "3.2"
 services:
     rabbitmq-server:
-            image: rabbitmq
-            hostname: "rabbitmq-server"
-            environment:
-                RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
-                RABBITMQ_DEFAULT_USER: "guest"
-                RABBITMQ_DEFAULT_PASS: "guest"
-                RABBITMQ_DEFAULT_VHOST: "/"
-            ports:
-                - "15672:15672"
-                - "5672:5672"
-            labels:
-                NAME: "rabbitmq-server"
+        container_name: rabbitmq-server
+        image: rabbitmq
+        hostname: "rabbitmq-server"
+        environment:
+            RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+            RABBITMQ_DEFAULT_USER: "guest"
+            RABBITMQ_DEFAULT_PASS: "guest"
+            RABBITMQ_DEFAULT_VHOST: "/"
+        ports:
+            - "15672:15672"
+            - "5672:5672"
+        labels:
+            NAME: "rabbitmq-server"
 
     python-order-service:
+        container_name: python-order-service
         build: ./python-order-service
         # 'rabbitmq-server' will be available as a network reference inside this service 
         # and this service will start only after the RabbitMQ service has.
@@ -29,6 +31,7 @@ services:
             - './python-order-service:/python-order-service'
 
     python-factory-service:
+        container_name: python-factory-service
         build: ./python-factory-service
         # 'rabbitmq-server' will be available as a network reference inside this service 
         # and this service will start only after the RabbitMQ service has.
@@ -43,6 +46,7 @@ services:
             - './python-factory-service:/python-factory-service'
 
     redis:
+        container_name: redis
         image: redis
 
 # Host volumes used to store code.
