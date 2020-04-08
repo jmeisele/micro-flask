@@ -1,6 +1,8 @@
 from flask import Flask, request
+import redis
 
 app = Flask(__name__)
+cache = redis.Redis(host='redis', port=6379)
 
 @app.route('/', methods=['GET'])
 def index():
