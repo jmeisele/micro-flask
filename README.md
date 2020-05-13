@@ -26,9 +26,8 @@ To install:
 6. This sends a message to the queue being managed by our RabbitMQ broker for the Python factory service to build
 
 _ProTip_ Check the status/health of all running containers using Portainer
-    ```bash
-    http://localhost:9000
-    ```
+    [http://localhost:9000]
+    
 # TODOs
 - [X] Construct docker compose file to get all services up and running
 - [ ] Create additional delivery microservice using NodeJS to demostrate cross language ability
