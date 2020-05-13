@@ -6,6 +6,7 @@ def emit_product_order(name):
     # thanks to docker-compose
     connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq-server'))
     channel = connection.channel()
+    channel.queue_declare('orders')
 
     exchange_name = 'product_order'
     routing_key = 'product.order.build'

@@ -15,14 +15,24 @@ To install:
     ```bash
     docker-compose up
     ```
-4. Send an order to the order service
+4. Open up a new terminal window and create an item to buy in the order service API endpoint
     ```bash
-    curl http://localhost:3001?params
+    curl -d "name=pokeball&price=200" -X POST http://localhost:3001/create
     ```
+5. Next buy the item you just created
+    ```bash
+    curl -d "name=pokeball" -X POST http://localhost:3002/buy
+    ```
+6. This sends a message to the queue being managed by our RabbitMQ broker for the Python factory service to build
 
+
+_ProTip_ Check the status/health of all running containers using Portainer
+    ```bash
+    http://localhost:9000
+    ```
 # TODOs
 - [X] Construct docker compose file to get all services up and running
-- [ ] Create additional delivery microservice using NodeJS
+- [ ] Create additional delivery microservice using NodeJS to demostrate cross language ability
 
 If you found this repo helpful, a [small donation](https://www.buymeacoffee.com/VlduzAG) would be greatly appreciated. 
 All proceeds go towards coffee, and all coffee goes towards more code.

@@ -1,23 +1,20 @@
-from flask import Flask, request, jsonify 
-from redis import Redis
-from services.order_event_handler import build_product_order
+import pika
 
-app = Flask(__name__)
-redis = Redis(host='redis', port=6379)
+connection = pika.BlockingConnection(
+    pika.ConnectionParameters(host='rabbitmq-server'))
+channel = connection.channel()
 
-@app.route('/create', methods=['POST'])
-def create():
-    name = request.form['name']
-    price = request.form['price']
-    redis.mset({name: price})
-    return jsonify({'name':name, 'price':price}), 201
+channel.queue_declare(queue='orders')
 
-@app.route('/build', methods = ['POST'])
-def buy():
-    name = request.form['name']
-    price = redis.get(name)
-    build_product_order(name)
-    return jsonify({'receipt': 'Thanks for ordering! Your total comes to: ' + str(price)}), 200
+def callback(ch, method, properties, body):
+    print(" [x] Received order %r" % body)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True, port=3001)
+
+channel.basic_consume(
+    queue='orders', on_message_callback=callback, auto_ack=True)
+
+print(' [*] Waiting for orders. To exit press CTRL+C')
+channel.start_consuming()
+
+# if __name__ == '__main__':
+#     app.run(host='0.0.0.0', debug=True, port=3001)
