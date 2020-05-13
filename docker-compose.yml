@@ -26,7 +26,7 @@ services:
         tty: true
         # Map port 3000 on the host machine to port 3000 of the container.
         ports:
-            - "3000:3000"
+            - "3000:3002"
         volumes:
             - './python-order-service:/python-order-service'
 
@@ -44,21 +44,6 @@ services:
             - "3001:3001"
         volumes:
             - './python-factory-service:/python-factory-service'
-
-    node-delivery-service:
-        container_name: node-delivery-service
-        build: ./node-delivery-service
-        # 'rabbitmq-server' will be available as a network reference inside this service 
-        # and this service will start only after the RabbitMQ service has.
-        depends_on:
-            - rabbitmq-server
-        # Keep it running.  
-        tty: true
-        # Map port 3001 on the host machine to port 3001 of the container.
-        ports:
-            - "3002:3002"
-        volumes:
-            - './node-deivery-service:/node-delivery-service'
 
     redis:
         container_name: redis
@@ -85,8 +70,7 @@ services:
             - /var/run/docker.sock:/var/run/docker.sock
             - ./portainer/volumes/portainer/data:/data
         
-    
 # Host volumes used to store code.
 volumes:
     python-order-service:
-    python-factory-service:
+    # python-factory-service:

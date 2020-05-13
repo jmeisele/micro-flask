@@ -20,4 +20,4 @@ def buy():
     return jsonify({'receipt': 'Thanks for ordering! Your total comes to: ' + str(price)}), 200
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True, port=3000)
+    app.run(host='0.0.0.0', debug=True, port=3002)
