@@ -1,10 +1,15 @@
 # MicroFlask
-Demo of using Flask back end micro services loosely decoupled with docker containers.
+Demo of using Flask back end micro services loosely decoupled within docker containers.
 
-From the command line:
-- git clone https://github.com/jmeisele/MicroFlask.git
-- cd MicroFlask
-- docker-compose up
+To install:
+1. Clone the project
+    git clone https://github.com/jmeisele/MicroFlask.git
+2. Change directories into the repo
+    cd MicroFlask
+3. Run docker compose
+    docker-compose up
+4. Send an order to the order service
+    curl http://localhost:3001?params
 
 
 # TODOs
