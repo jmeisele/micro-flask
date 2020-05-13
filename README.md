@@ -17,14 +17,13 @@ To install:
     ```
 4. Open up a new terminal window and create an item to buy in the order service API endpoint
     ```bash
-    curl -d "name=pokeball&price=200" -X POST http://localhost:3001/create
+    curl -d "name=mercedes&price=200" -X POST http://localhost:3002/create
     ```
-5. Next buy the item you just created
+5. Next in the terminal window, buy the item you just created
     ```bash
-    curl -d "name=pokeball" -X POST http://localhost:3002/buy
+    curl -d "name=mercedes" -X POST http://localhost:3002/buy
     ```
 6. This sends a message to the queue being managed by our RabbitMQ broker for the Python factory service to build
-
 
 _ProTip_ Check the status/health of all running containers using Portainer
     ```bash
