@@ -6,8 +6,11 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq-se
 channel = connection.channel()
 channel.queue_declare(queue='orders')
 
-def callback(ch, method, properties, body):
-    print(" [x] Received order %r" % body)
+# def callback(ch, method, properties, body):
+#     print(f"[x] Received order {body}")
+
+def callback(body):
+    print(f"[x] Received order {body}")
 
 channel.basic_consume(queue='orders', on_message_callback=callback, auto_ack=True)
 

@@ -13,7 +13,7 @@ services:
             - "15672:15672"
             - "5672:5672"
         labels:
-            NAME: "rabbitmq-server"
+            name: "rabbitmq-server"
 
     python-order-service:
         container_name: python-order-service
@@ -37,6 +37,8 @@ services:
         # and this service will start only after the RabbitMQ service has.
         depends_on:
             - rabbitmq-server
+        links:
+            - "rabbitmq-server"
         # Keep it running.  
         tty: true
         # Map port 3001 on the host machine to port 3001 of the container.
