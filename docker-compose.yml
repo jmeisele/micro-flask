@@ -71,8 +71,15 @@ services:
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
             - ./portainer/volumes/portainer/data:/data
-        
+    
+    node-delivery-service:
+        container_name: node-delivery-service
+        build: ./node-delivery-service
+        ports: 
+            - "4001:8081"
+        restart: always       
+         
 # Host volumes used to store code.
-volumes:
-    python-order-service:
+# volumes:
+#     python-order-service:
     # python-factory-service:
