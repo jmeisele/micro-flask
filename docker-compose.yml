@@ -79,7 +79,3 @@ services:
             - "4001:8081"
         restart: always       
          
-# Host volumes used to store code.
-# volumes:
-#     python-order-service:
-    # python-factory-service:
